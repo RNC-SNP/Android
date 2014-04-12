@@ -9,11 +9,7 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.SurfaceView;
-/**
- * @description: 
- * @author: ruizhe.liu@duitang.com
- * @time:	2013-2-19ионГ11:20:19
- */
+ 
 public class DataDisplayView extends SurfaceView{
 	private ArrayList<short[]> inBuf;
 	private boolean isRunning = false;

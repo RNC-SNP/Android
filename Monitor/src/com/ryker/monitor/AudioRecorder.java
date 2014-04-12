@@ -5,11 +5,7 @@ import java.util.ArrayList;
 import android.media.AudioFormat;
 import android.media.AudioRecord;
 import android.media.MediaRecorder;
-/**
- * @description: 
- * @author: ruizhe.liu@duitang.com
- * @time:	2013-2-19ионГ11:20:29
- */
+ 
 public class AudioRecorder {
 	private static final int DEFAULT_FREQUENCY = 44100;
 	private static final int CHANNEL_CONFIG = AudioFormat.CHANNEL_IN_MONO;

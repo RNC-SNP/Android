@@ -5,10 +5,6 @@ import android.graphics.Canvas;
 
 import com.azure.graphview.GraphViewSeries.GraphViewSeriesStyle;
 
-/**
- * Draws a Bar Chart
- * @author Muhammad Shahab Hameed
- */
 public class BarGraphView extends GraphView {
 	public BarGraphView(Context context, String title) {
 		super(context, title);
