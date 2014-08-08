@@ -2,7 +2,6 @@ package com.rincliu.callinterceptor.activity;
 
 import java.util.ArrayList;
 
-import com.rincliu.callinterceptor.R;
 import com.rincliu.callinterceptor.Util;
 
 import android.app.Activity;
@@ -24,7 +23,6 @@ public class MainActivity extends Activity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
         final ListView lv = new ListView(this);
         setContentView(lv);
 
