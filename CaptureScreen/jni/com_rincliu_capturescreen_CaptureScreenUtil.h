@@ -6,7 +6,7 @@
 extern "C" {
 #endif
 
-JNIEXPORT void JNICALL Java_com_cust_android_screencap_ScreenCap_captureScreenToFile
+JNIEXPORT void JNICALL Java_com_rincliu_capturescreen_CaptureScreenUtil_captureScreenToFile
   (JNIEnv *, jclass, jstring);
 
 #ifdef __cplusplus

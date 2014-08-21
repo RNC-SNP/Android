@@ -14,7 +14,7 @@
 
 using namespace android;
 
-JNIEXPORT void JNICALL Java_com_cust_android_screencap_ScreenCap_captureScreenToFile
+JNIEXPORT void JNICALL Java_com_rincliu_capturescreen_CaptureScreenUtil_captureScreenToFile
   (JNIEnv *env, jclass clazz, jstring fileName) {
 
     const String16 name("SurfaceFlinger");
