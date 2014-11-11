@@ -1,4 +1,4 @@
-Roid-Demo
+Roid-Snippets
 ===========
 
 Code Snippets of Android.
