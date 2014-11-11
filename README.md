@@ -1,4 +1,4 @@
 Roid-Demo
 ===========
 
-Demos of Android.
+Code Snippets of Android.
