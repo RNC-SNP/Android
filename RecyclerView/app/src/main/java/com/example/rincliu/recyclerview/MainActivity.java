@@ -45,7 +45,7 @@ public class MainActivity extends ActionBarActivity {
 
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        itemDecoration = new DividerItemDecoration(10);
+        itemDecoration = new MyItemDecoration(LinearLayoutManager.HORIZONTAL, 10);
         mRecyclerView.addItemDecoration(itemDecoration);
 
         mRecyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
