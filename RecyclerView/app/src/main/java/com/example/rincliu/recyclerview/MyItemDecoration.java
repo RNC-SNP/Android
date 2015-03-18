@@ -34,9 +34,9 @@ public class MyItemDecoration extends RecyclerView.ItemDecoration {
     @Override
     public void onDraw(Canvas c, RecyclerView parent, RecyclerView.State state) {
         if(mOrientation == LinearLayoutManager.VERTICAL){
-            drawVertical(c,parent);
+            drawVerticalLines(c, parent);
         }else {
-            drawHorizontal(c,parent);
+            drawHorizontalLines(c, parent);
         }
     }
 
@@ -45,11 +45,11 @@ public class MyItemDecoration extends RecyclerView.ItemDecoration {
         onDrawOver(c, parent, state);
     }
 
-    private void drawVertical(Canvas canvas, RecyclerView parent){
+    private void drawVerticalLines(Canvas canvas, RecyclerView parent){
         final int left = parent.getPaddingLeft();
         final int right = parent.getMeasuredWidth() - parent.getPaddingRight();
         final int childSize = parent.getChildCount();
-        for(int i = 0; i < childSize; i ++){
+        for(int i = 0; i < childSize; i++){
             final View child = parent.getChildAt(i);
             RecyclerView.LayoutParams layoutParams = (RecyclerView.LayoutParams) child.getLayoutParams();
             final int top = child.getBottom() + layoutParams.bottomMargin;
@@ -58,11 +58,11 @@ public class MyItemDecoration extends RecyclerView.ItemDecoration {
         }
     }
 
-    private void drawHorizontal(Canvas canvas, RecyclerView parent){
+    private void drawHorizontalLines(Canvas canvas, RecyclerView parent){
         final int top = parent.getPaddingTop();
         final int bottom = parent.getMeasuredHeight() - parent.getPaddingBottom();
         final int childSize = parent.getChildCount();
-        for(int i = 0; i < childSize; i ++){
+        for(int i = 0; i < childSize; i++){
             final View child = parent.getChildAt(i);
             RecyclerView.LayoutParams layoutParams = (RecyclerView.LayoutParams) child.getLayoutParams();
             final int left = child.getRight() + layoutParams.rightMargin;
