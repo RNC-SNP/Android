@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -26,12 +27,15 @@ public class MyAdapter extends RecyclerView.Adapter {
 
     public static class MyViewHolder extends RecyclerView.ViewHolder
     {
-        public MyViewHolder(View v)
-        {
-            super(v);
-        }
         ImageView iv;
         TextView tvPlatform, tvLang;
+
+        public MyViewHolder(View v) {
+            super(v);
+            iv = (ImageView) v.findViewById(R.id.iv);
+            tvPlatform = (TextView) v.findViewById(R.id.tv_platform);
+            tvLang = (TextView) v.findViewById(R.id.tv_lang);
+        }
     }
 
     @Override
@@ -46,20 +50,23 @@ public class MyAdapter extends RecyclerView.Adapter {
                 v = inflater.inflate(R.layout.view_holder_layout_1, null);
                 break;
         }
-        MyViewHolder vh = new MyViewHolder(v);
-        vh.iv = (ImageView) v.findViewById(R.id.iv);
-        vh.tvPlatform = (TextView) v.findViewById(R.id.tv_platform);
-        vh.tvLang = (TextView) v.findViewById(R.id.tv_lang);
-        return vh;
+        return new MyViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, final int position) {
         Data data = dataSet.get(position);
         MyViewHolder vh = (MyViewHolder) viewHolder;
         vh.iv.setImageDrawable(context.getResources().getDrawable(R.mipmap.ic_launcher));
         vh.tvPlatform.setText(data.getPlatform());
         vh.tvLang.setText(data.getLang());
+        vh.iv.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v)
+            {
+                Toast.makeText(context, "" + position, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override

@@ -2,10 +2,12 @@ package com.example.rincliu.recyclerview;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+
 import java.util.ArrayList;
 
 
@@ -14,6 +16,7 @@ public class MainActivity extends ActionBarActivity {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private LinearLayoutManager mLayoutManager;
+    private RecyclerView.ItemDecoration itemDecoration;
     private ArrayList<Data> dataSet = new ArrayList<Data>();
 
     @Override
@@ -29,7 +32,7 @@ public class MainActivity extends ActionBarActivity {
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        for (int i = 0; i < 100; i++){
+        for (int i = 0; i < 20; i++) {
             Data data = new Data();
             data.setPlatform("Android");
             data.setLang("Java");
@@ -40,25 +43,32 @@ public class MainActivity extends ActionBarActivity {
         mAdapter = new MyAdapter(this, dataSet);
         mRecyclerView.setAdapter(mAdapter);
 
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+
+        itemDecoration = new DividerItemDecoration(10);
+        mRecyclerView.addItemDecoration(itemDecoration);
+
         mRecyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
-            public void onScrollStateChanged(int state) {
-                if(state == RecyclerView.SCROLL_STATE_IDLE)
-                {
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                int lastPos = mLayoutManager.findLastCompletelyVisibleItemPosition();
+                if (newState == RecyclerView.SCROLL_STATE_IDLE && lastPos == dataSet.size() - 1) {
                     Data data = new Data();
                     data.setPlatform("iOS");
                     data.setLang("Objective-C/Swift");
                     data.setType(0);
                     dataSet.add(data);
-                    mAdapter.notifyDataSetChanged();
+                    mAdapter.notifyItemInserted(lastPos);
                 }
             }
 
             @Override
-            public void onScrolled(int i, int i2) {
-
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                android.util.Log.d("@", dx + "," + dy);
             }
         });
+
+        mLayoutManager.scrollToPosition(10);
     }
 
     @Override
