@@ -25,7 +25,7 @@ public class MyAdapter extends RecyclerView.Adapter {
         this.dataSet = dataSet;
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder
+    private static class MyViewHolder extends RecyclerView.ViewHolder
     {
         ImageView iv;
         TextView tvPlatform, tvLang;
