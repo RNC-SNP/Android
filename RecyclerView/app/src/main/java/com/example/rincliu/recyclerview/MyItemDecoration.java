@@ -42,7 +42,7 @@ public class MyItemDecoration extends RecyclerView.ItemDecoration {
 
     @Override
     public void onDrawOver(Canvas c, RecyclerView parent, RecyclerView.State state) {
-        onDrawOver(c, parent, state);
+        super.onDrawOver(c, parent, state);
     }
 
     private void drawVerticalLines(Canvas canvas, RecyclerView parent){
