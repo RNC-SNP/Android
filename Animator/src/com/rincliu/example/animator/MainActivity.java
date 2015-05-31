@@ -32,8 +32,8 @@ public class MainActivity extends Activity
             public void onClick(View v)
             {
                 //performViewPropertyAnim(v));
-                //performObjectAnim(new ViewWrapper(v));
-                performValueAnim(v);
+                performObjectAnim(new ViewWrapper(v));
+                //performValueAnim(v);
             }
         });
 
