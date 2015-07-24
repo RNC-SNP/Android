@@ -13,5 +13,10 @@ public class TestActivity extends Activity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
+
+        if (!MyAccessibilityUtils.isSettingOn(this))
+        {
+            MyAccessibilityUtils.gotoSetting(this);
+        }
     }
 }
