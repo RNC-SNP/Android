@@ -1,5 +1,6 @@
 package com.example.accessibility;
 
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.provider.Settings;
@@ -17,12 +18,12 @@ public class MyAccessibilityUtils
     public static boolean isSettingOn(Context context)
     {
         final String MY_ACCESSIBILITY_SERVICE = context.getPackageName() + "/" + MyAccessibilityService.class.getName();
+        final ContentResolver cResolver = context.getApplicationContext().getContentResolver();
 
         int accessibilityEnabled = -1;
         try
         {
-            accessibilityEnabled = Settings.Secure.getInt(context.getApplicationContext().getContentResolver(),
-                    android.provider.Settings.Secure.ACCESSIBILITY_ENABLED);
+            accessibilityEnabled = Settings.Secure.getInt(cResolver, Settings.Secure.ACCESSIBILITY_ENABLED);
         }
         catch (SettingNotFoundException e)
         {
@@ -30,16 +31,15 @@ public class MyAccessibilityUtils
 
         if (accessibilityEnabled == 1)
         {
-            String settingValue = Settings.Secure.getString(context.getApplicationContext().getContentResolver(),
-                    Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES);
+            String settingValue = Settings.Secure.getString(cResolver, Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES);
             if (settingValue != null)
             {
                 TextUtils.SimpleStringSplitter splitter = new TextUtils.SimpleStringSplitter(':');
                 splitter.setString(settingValue);
                 while (splitter.hasNext())
                 {
-                    String accessabilityService = splitter.next();
-                    if (accessabilityService.equalsIgnoreCase(MY_ACCESSIBILITY_SERVICE))
+                    String s = splitter.next();
+                    if (MY_ACCESSIBILITY_SERVICE.equals(s))
                     {
                         return true;
                     }
